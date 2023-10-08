@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Cycle Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            text-transform: uppercase;
+            color: #3498db;
+        }
+        .stage {
+            width: 150px;
+            height: 150px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+            display: inline-block;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        .stage:hover {
+            background-color: #2980b9;
+        }
+        .stage p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .info {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .info p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Water Cycle </h1>
+        
+        <!-- Include the game container here -->
+        <div class="stage" id="ocean" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqCXktvjiPDLuz_NQCSHOiy6opmMq12fS-5u_aTX4yqQ&s');">
+            <p>1. Ocean</p>
+        </div>
+        
+        <div class="stage" id="evaporation" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3JKfMdG_OJ2LURfVoVb6K-sFidTTs-kO00g&usqp=CAU');">
+            <p>2. Evaporation</p>
+        </div>
+        <div class="stage" id="condensation" style="background-image: url('https://cdn.pixabay.com/photo/2016/06/26/22/49/drop-of-water-1481508_640.jpg');">
+            <p>3. Condensation</p>
+        </div>
+        
+        <div class="stage" id="precipitation" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7SKvD9_4F8ipGsCfv6wr19UMsjwC2n45oeA8lBc5zg&s');">
+            <p>4. Precipitation</p>
+        </div>
+        <div class="stage" id="groundwater" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHzpYx9fJWTwQ3IAe2aGbbMYTNza07W8Dk7A&usqp=CAU');">
+            <p>5. Groundwater</p>
+        </div>
+        <div class="stage" id="river" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkfJqbDbB8UUKNgiJJZAltKhkFV7dzn7pdcT7gLkd-VA&s');">
+            <p>6. River</p>
+        </div>
+
+        <!-- Information about the water cycle -->
+        <div class="info">
+            <p>Click on each stage to learn more about the water cycle!</p>
+            <div id="info-text"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript logic for animation -->
+    <script>
+        const stages = {
+            ocean: "The journey begins in the ocean, where water covers most of the Earth's surface.",
+            evaporation: "The sun's heat causes water to evaporate into water vapor, rising into the atmosphere.",
+            condensation: "Water vapor cools and condenses into clouds, forming visible water droplets.",
+            precipitation: "When clouds become heavy, water droplets combine and fall as precipitation, which can include rain, snow, or hail.",
+            groundwater: "Some water seeps into the ground to become groundwater, stored in underground aquifers.",
+            river: "Water flows into rivers and streams, eventually returning to the ocean to complete the cycle."
+        };
+
+        const infoText = document.getElementById("info-text");
+
+        Object.keys(stages).forEach(stage => {
+            const element = document.getElementById(stage);
+            element.addEventListener("click", () => {
+                infoText.textContent = stages[stage];
+            });
+        });
+    </script>
+</body>
+</html>

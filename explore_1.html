@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Starts with Water</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            background-color:white;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        p {
+            color:black;
+            text-align: justify;
+            margin: 20px;
+        }
+        .chart-container {
+            width: 600px;
+            margin: 20px auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+</head>
+<body>
+    <h1>Everything Starts with Water</h1>
+    <p>
+        Water is a remarkable substance that plays a crucial role in the existence of life on Earth. It covers approximately 71% of our planet's surface and is essential for all living organisms. Beyond its importance for hydration and sustenance, water has many fascinating properties.
+    </p>
+    <p>
+        One of the most intriguing properties of water is its ability to exist in three different states: solid (ice), liquid (water), and gas (vapor) under normal conditions. This unique feature allows water to participate in various natural processes, from the water cycle to the formation of breathtaking ice sculptures.
+    </p>
+    <p>
+        Water is also a universal solvent, meaning it can dissolve a wide range of substances. This property is the basis for countless chemical reactions and biological processes. Without it, life as we know it would be impossible.
+    </p>
+    <p>
+        As you explore this webpage, consider the vital role that water plays in our daily lives and in the grand scheme of the universe. It's a reminder that "everything starts with water," and it's worth celebrating and preserving this precious resource.
+    </p>
+
+    <div class="chart-container">
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <script>
+        const data = {
+            labels: ['Water Scarcity', 'Sea Level Rise', 'Extreme Weather', 'Biodiversity Loss'],
+            datasets: [{
+                data: [30, 20, 35, 15],
+                backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)'],
+                borderColor: '#fff',
+                borderWidth: 1
+            }]
+        };
+
+        const pieChart = new Chart(document.getElementById('pieChart'), {
+            type: 'pie',
+            data: data,
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Impact of Climate Change on Water'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

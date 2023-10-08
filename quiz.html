@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change Quiz</title>
+    <style>
+        body {
+            background-image: url('https://media.istockphoto.com/id/1339138376/photo/climate-change-from-drought-to-green-growth.jpg?s=612x612&w=0&k=20&c=05aOfOV32_8Ow5cgcRFV6vcKdmxvD2LHqWxiiZXi2pU=');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+        .quiz-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        .quiz-question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+        }
+        .quiz-option {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+        #submit-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #result {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Climate Change Quiz</h1>
+
+    <form id="quiz-form">
+        <!-- Question 1 -->
+        <div class="quiz-container">
+            <div class="quiz-question">1. What is the primary cause of climate change?</div>
+            <div class="quiz-options">
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="A"> A. Natural events
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="B"> B. Human activities
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="C"> C. Solar flares
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="D"> D. Volcanic eruptions
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-container">
+            <div class="quiz-question">2. Which gas is primarily responsible for the greenhouse effect?</div>
+            <div class="quiz-options">
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="A"> A. Oxygen
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="B"> B. Carbon dioxide
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="C"> C. Nitrogen
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="D"> D. Hydrogen
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-container">
+            <div class="quiz-question">3. What is the term for the gradual increase in Earth's average temperature?</div>
+            <div class="quiz-options">
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="A"> A. Global cooling
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="B"> B. Climate shift
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="C"> C. Global warming
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="D"> D. Temperature fluctuation
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="quiz-container">
+            <div class="quiz-question">4. What is the main source of carbon dioxide emissions from human activities?</div>
+            <div class="quiz-options">
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="A"> A. Deforestation
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="B"> B. Agriculture
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="C"> C. Transportation
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="D"> D. Industrial processes
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="quiz-container">
+            <div class="quiz-question">5. How can individuals help reduce their carbon footprint and combat climate change?</div>
+            <div class="quiz-options">
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="A"> A. Use plastic products more frequently
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="B"> B. Drive alone in gas-guzzling vehicles
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="C"> C. Conserve energy and use public transportation
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="D"> D. Increase water usage at home
+                </label>
+            </div>
+        </div>
+
+        <button type="button" id="submit-button" onclick="calculateScore()">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function calculateScore() {
+            // Initialize the score to 0
+            var score = 0;
+
+            // Get the selected answers and correct answers
+            var selectedAnswers = document.querySelectorAll('input:checked');
+            var correctAnswers = ["B", "B", "C", "C", "C"]; // Replace with your correct answers
+
+            // Loop through the selected answers and compare with correct answers
+            for (var i = 0; i < selectedAnswers.length; i++) {
+                var resultDiv = document.getElementById('result');
+                var questionDiv = selectedAnswers[i].closest('.quiz-container');
+                var span = document.createElement('span');
+                span.style.marginRight = '10px';
+
+                if (selectedAnswers[i].value === correctAnswers[i]) {
+                    // Increase the score for correct answers
+                    span.textContent = 'Correct';
+                    span.style.color = 'green';/
+                } else {
+                    // Display "Wrong" for wrong answers
+                    span.textContent = 'Wrong';
+                    span.style.color = 'red';
+                }
+                questionDiv.appendChild(span);
+            }
+        }
+    </script>
+</body>
+</html>
